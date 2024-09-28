@@ -9,7 +9,6 @@
   become_user:
     root
   remote_user:
-#    ansible
-    dinky
+    ansible
   roles:
    - nginx
