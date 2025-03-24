@@ -1,0 +1,6 @@
+[Unit]
+Description=Run monitoring script
+
+[Service]
+Type=oneshot
+ExecStart=/tmp/monitoring.sh
