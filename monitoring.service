@@ -1,6 +1,15 @@
 [Unit]
 Description=Run monitoring script
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=oneshot
+ExecStartPre=/bin/sh -c 'echo "$(date "+%Y-%m-%d %H:%M:%S") - Monitoring script restarted." >> /var/log/monitoring.log'
 ExecStart=/tmp/monitoring.sh
+StandardOutput=append:/var/log/monitoring.log
+StandardError=append:/var/log/monitoring.log
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
